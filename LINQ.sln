@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq_Basics", "Linq_Basics\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Introduction to Linq", "Introduction to Linq", "{FD7256D4-5254-4857-ADFD-E1E3D9D7EA79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda_Expressions", "Lambda_Expressions\Lambda_Expressions.csproj", "{9D8553F5-FF90-4CD6-BCB5-2A59C9D04071}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{C51FE230-08F4-4736-AF61-366755F44E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C51FE230-08F4-4736-AF61-366755F44E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C51FE230-08F4-4736-AF61-366755F44E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D8553F5-FF90-4CD6-BCB5-2A59C9D04071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D8553F5-FF90-4CD6-BCB5-2A59C9D04071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D8553F5-FF90-4CD6-BCB5-2A59C9D04071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D8553F5-FF90-4CD6-BCB5-2A59C9D04071}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C51FE230-08F4-4736-AF61-366755F44E0E} = {FD7256D4-5254-4857-ADFD-E1E3D9D7EA79}
+		{9D8553F5-FF90-4CD6-BCB5-2A59C9D04071} = {FD7256D4-5254-4857-ADFD-E1E3D9D7EA79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E9D42CD-E015-4F6B-A1B3-AD148C80E077}
