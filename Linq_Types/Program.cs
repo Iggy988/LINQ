@@ -1,6 +1,4 @@
-﻿
-
-var numbers = new[] { 5, 9, 2, 16, 6, 10, 7 };
+﻿var numbers = new[] { 5, 9, 2, 16, 6, 10, 7 };
 
 var pets = new[]
 {
@@ -17,7 +15,7 @@ var pets = new[]
 
 
 //Any
-Console.WriteLine("ANY");
+Console.WriteLine("ANY:");
 bool isAnyLargerThan10 = numbers.Any(num =>num > 10);
 Console.WriteLine(isAnyLargerThan10);
 var isAnyPetNamedBruce = pets.Any(p => p.Name == "Bruce");
@@ -27,6 +25,17 @@ Printer.Print(isAnyFish, nameof(isAnyFish));
 var isThereAVerySpecificPet = pets.Any(p => p.Name.Length > 6 && p.Id % 2== 0);
 Printer.Print(isThereAVerySpecificPet, nameof(isThereAVerySpecificPet));
 var isNotEmpty = pets.Any();
+Console.WriteLine();
+Console.WriteLine();
+
+//All
+Console.WriteLine("ALL:");
+var areAllLargerThanZero = numbers.All(num => num > 0);
+Printer.Print(areAllLargerThanZero, nameof(areAllLargerThanZero));
+var doAllHaveNoEmptyNames = pets.All(p => !string.IsNullOrEmpty(p.Name));
+Printer.Print(doAllHaveNoEmptyNames, nameof(doAllHaveNoEmptyNames));
+var areAllPetsCats = pets.All(p => p.PetType == PetType.Cat);
+Printer.Print(areAllPetsCats, nameof(areAllPetsCats));
 Console.WriteLine();
 Console.WriteLine();
 
