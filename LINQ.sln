@@ -9,13 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Introduction to Linq", "Int
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lambda_Expressions", "Lambda_Expressions\Lambda_Expressions.csproj", "{9D8553F5-FF90-4CD6-BCB5-2A59C9D04071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extension_Methods", "Extension_Methods\Extension_Methods.csproj", "{967A147A-7EEA-4A0C-9E47-3193F88A5E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extension_Methods", "Extension_Methods\Extension_Methods.csproj", "{967A147A-7EEA-4A0C-9E47-3193F88A5E07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEnumerable_Of_T_Type", "IEnumerable_Of_T_Type\IEnumerable_Of_T_Type.csproj", "{222F052B-8EDE-4FB5-B1CC-86A4F2092D21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IEnumerable_Of_T_Type", "IEnumerable_Of_T_Type\IEnumerable_Of_T_Type.csproj", "{222F052B-8EDE-4FB5-B1CC-86A4F2092D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Defered_Execution_Of_Linq", "Defered_Execution_Of_Linq\Defered_Execution_Of_Linq.csproj", "{29D58938-1529-4469-A8D2-06E445035541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Defered_Execution_Of_Linq", "Defered_Execution_Of_Linq\Defered_Execution_Of_Linq.csproj", "{29D58938-1529-4469-A8D2-06E445035541}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Method_Sintax_vs_Query_Sintax", "Method_Sintax_vs_Query_Sintax\Method_Sintax_vs_Query_Sintax.csproj", "{D5A42012-8860-4EAA-B579-E8D3DFAA87B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Method_Sintax_vs_Query_Sintax", "Method_Sintax_vs_Query_Sintax\Method_Sintax_vs_Query_Sintax.csproj", "{D5A42012-8860-4EAA-B579-E8D3DFAA87B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LINQ_Types", "LINQ_Types", "{54C977CE-1788-4547-9B15-E4D44FF938E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq_Types", "Linq_Types\Linq_Types.csproj", "{88657142-4F13-4569-90A6-402A660F20DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,10 @@ Global
 		{D5A42012-8860-4EAA-B579-E8D3DFAA87B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5A42012-8860-4EAA-B579-E8D3DFAA87B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5A42012-8860-4EAA-B579-E8D3DFAA87B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88657142-4F13-4569-90A6-402A660F20DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88657142-4F13-4569-90A6-402A660F20DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88657142-4F13-4569-90A6-402A660F20DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88657142-4F13-4569-90A6-402A660F20DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +66,7 @@ Global
 		{222F052B-8EDE-4FB5-B1CC-86A4F2092D21} = {FD7256D4-5254-4857-ADFD-E1E3D9D7EA79}
 		{29D58938-1529-4469-A8D2-06E445035541} = {FD7256D4-5254-4857-ADFD-E1E3D9D7EA79}
 		{D5A42012-8860-4EAA-B579-E8D3DFAA87B2} = {FD7256D4-5254-4857-ADFD-E1E3D9D7EA79}
+		{88657142-4F13-4569-90A6-402A660F20DF} = {54C977CE-1788-4547-9B15-E4D44FF938E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E9D42CD-E015-4F6B-A1B3-AD148C80E077}
