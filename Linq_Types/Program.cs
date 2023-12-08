@@ -12,8 +12,6 @@ var pets = new[]
      new Pet(8, "Nyan", PetType.Cat, 2.2f),
 };
 
-
-
 //Any
 Console.WriteLine("ANY:");
 bool isAnyLargerThan10 = numbers.Any(num =>num > 10);
@@ -25,6 +23,7 @@ Printer.Print(isAnyFish, nameof(isAnyFish));
 var isThereAVerySpecificPet = pets.Any(p => p.Name.Length > 6 && p.Id % 2== 0);
 Printer.Print(isThereAVerySpecificPet, nameof(isThereAVerySpecificPet));
 var isNotEmpty = pets.Any();
+Printer.Print(isNotEmpty, nameof(isNotEmpty));
 Console.WriteLine();
 Console.WriteLine();
 
@@ -38,5 +37,19 @@ var areAllPetsCats = pets.All(p => p.PetType == PetType.Cat);
 Printer.Print(areAllPetsCats, nameof(areAllPetsCats));
 Console.WriteLine();
 Console.WriteLine();
+
+//Count/LongCont
+Console.WriteLine("COUNT/LONGCOUNT:");
+var countOfDogs = pets.Count(p => p.PetType == PetType.Dog);
+Printer.Print(countOfDogs, nameof(countOfDogs));
+var countOfPetsNAmedBruce = pets.LongCount(p => p.Name == "Bruce");
+Printer.Print(countOfPetsNAmedBruce, nameof(countOfPetsNAmedBruce));
+var countOfAllSmallDogs = pets.Count(p => p.PetType == PetType.Dog && p.Weight < 10);
+Printer.Print(countOfAllSmallDogs, nameof(countOfAllSmallDogs));
+var allPetsCount = pets.Count();
+Printer.Print(allPetsCount, nameof(allPetsCount));
+Console.WriteLine();
+Console.WriteLine();
+
 
 Console.ReadKey();
