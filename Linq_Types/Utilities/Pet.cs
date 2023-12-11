@@ -1,10 +1,10 @@
 ﻿
 public class Pet
 {
-    public int Id;
-    public string Name;
-    public PetType PetType;
-    public float Weight;
+    public int Id { get; }
+    public string Name { get; }
+    public PetType PetType { get; }
+    public float Weight { get; }
 
     public Pet(int id, string name, PetType petType, float weight)
     {

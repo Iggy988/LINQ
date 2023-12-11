@@ -1,5 +1,5 @@
 ﻿var numbers = new[] { 5, 9, 2, 16, 6, 10, 7 };
-
+var words = new[] { "lion", "tiger", "leopard"};
 var pets = new[]
 {
      new Pet(1, "Hannibal", PetType.Fish, 1.1f),
@@ -51,5 +51,22 @@ Printer.Print(allPetsCount, nameof(allPetsCount));
 Console.WriteLine();
 Console.WriteLine();
 
+//Contains
+Console.WriteLine("CONTAINS:");
+bool is7Present = numbers.Contains(7);
+Printer.Print(is7Present, nameof(is7Present));
+bool isLionPresent = words.Contains("lion");
+Printer.Print(isLionPresent, nameof(isLionPresent));
+// not the same object (different reference)
+bool isHannibalPresent = pets.Contains(new Pet(1, "Hannibal", PetType.Fish, 1.1f));
+Printer.Print(isHannibalPresent, nameof(isHannibalPresent));
+//same object (same reference)
+var hannibal = pets[0];
+bool isRealHannibal = pets.Contains(hannibal);
+Printer.Print(isRealHannibal, nameof(isRealHannibal));
+bool isHannibalPresentCustomComparer = pets.Contains(new Pet(1, "Hannibal", PetType.Fish, 1.1f), new PetComparerById());
+Printer.Print(isHannibalPresentCustomComparer, nameof(isHannibalPresentCustomComparer));
+Console.WriteLine();
+Console.WriteLine();
 
 Console.ReadKey();
