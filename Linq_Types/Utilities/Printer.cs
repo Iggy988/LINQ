@@ -1,13 +1,4 @@
 ﻿
-
-
-
-
-
-//Any
-
-
-//this class helps to print collections nicely
 public static class Printer
 {
     public static void Print<T>(T item, string itemName)

@@ -69,4 +69,21 @@ Printer.Print(isHannibalPresentCustomComparer, nameof(isHannibalPresentCustomCom
 Console.WriteLine();
 Console.WriteLine();
 
+//OrderBy
+Console.WriteLine("ORDERBY:");
+var petsOrderedByName = pets.OrderBy(p => p.Name);
+Printer.Print(petsOrderedByName, nameof(petsOrderedByName));
+//Printer.Print(pets, nameof(pets));
+var petsOrderedById = pets.OrderByDescending(p => p.Id);
+Printer.Print(petsOrderedById, nameof(petsOrderedById));
+var ordererdNumbers = numbers.OrderBy(n  => n);
+Printer.Print(ordererdNumbers, nameof(ordererdNumbers));
+var petsOrderByTypeThenName = pets.OrderBy(p => p.PetType).ThenBy(p => p.Name);
+Printer.Print(petsOrderByTypeThenName, nameof(petsOrderByTypeThenName));
+var petsOrderedByTypeWithComparer = pets.OrderBy(p => p, new PetByTypeComparer());
+Printer.Print(petsOrderedByTypeWithComparer, nameof(petsOrderedByTypeWithComparer));
+var petsReversed = pets.Reverse();
+Printer.Print(petsReversed, nameof(petsReversed));
+
+
 Console.ReadKey();

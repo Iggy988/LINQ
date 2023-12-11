@@ -13,4 +13,9 @@ public class Pet
         PetType = petType;
         Weight = weight;
     }
+
+    public override string ToString()
+    {
+        return $"id: {Id}, name: {Name}, pet type: {PetType}, weight: {Weight}";
+    }
 }
