@@ -114,8 +114,18 @@ Printer.Print(averageWeightOfPets, nameof(averageWeightOfPets));
 //var averagePet = pets.Average();
 //var emptyNumbers = new int[0];
 //var average = emptyNumbers.Average();
+Console.WriteLine();
+Console.WriteLine();
 
 
-
+//Sum
+Console.WriteLine("SUM:");
+var sumOfNumbers = numbers.Sum();
+var sumOfWeights = pets.Sum(p =>  p.Weight);
+Printer.Print(sumOfNumbers, nameof(sumOfNumbers));
+Printer.Print(sumOfWeights, nameof(sumOfWeights));
+var emptyNumbers = new int[0];
+var sum = emptyNumbers.Sum();
+Printer.Print(sum, nameof(sum));
 
 Console.ReadKey();
