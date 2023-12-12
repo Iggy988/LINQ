@@ -1,4 +1,4 @@
-﻿var numbers = new[] { 5, 9, 2, 16, 6, 10, 7 };
+﻿var numbers = new[] { -1, 3, 5, 9, 2, 16, 6, 10, 7, -10 };
 var words = new[] { "lion", "tiger", "leopard"};
 var pets = new[]
 {
@@ -84,6 +84,26 @@ var petsOrderedByTypeWithComparer = pets.OrderBy(p => p, new PetByTypeComparer()
 Printer.Print(petsOrderedByTypeWithComparer, nameof(petsOrderedByTypeWithComparer));
 var petsReversed = pets.Reverse();
 Printer.Print(petsReversed, nameof(petsReversed));
+Console.WriteLine();
+Console.WriteLine();
+
+//Min/Max
+Console.WriteLine("MIN/MAX:");
+var smallest = numbers.Min();
+Printer.Print(smallest, nameof(smallest));
+var largest = numbers.Max();
+Printer.Print(largest, nameof(largest));
+var minWeight = pets.Min(p =>p.Weight);
+var maxWeight = pets.Max(p =>p.Weight);
+Printer.Print(minWeight, nameof(minWeight));
+Printer.Print(maxWeight, nameof(maxWeight));
+var minPet = pets.Min();
+Printer.Print(minPet, nameof(minPet));
+//var emptyNumbers = new int[0];
+//var minimalNumber = numbers.Min();
+Console.WriteLine();
+Console.WriteLine();
+
 
 
 Console.ReadKey();

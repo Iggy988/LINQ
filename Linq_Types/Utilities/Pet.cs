@@ -1,5 +1,5 @@
 ﻿
-public class Pet
+public class Pet : IComparable<Pet>
 {
     public int Id { get; }
     public string Name { get; }
@@ -17,5 +17,10 @@ public class Pet
     public override string ToString()
     {
         return $"id: {Id}, name: {Name}, pet type: {PetType}, weight: {Weight}";
+    }
+
+    public int CompareTo(Pet? other)
+    {
+        return Weight.CompareTo(other.Weight);
     }
 }
