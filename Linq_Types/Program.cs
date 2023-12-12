@@ -127,5 +127,25 @@ Printer.Print(sumOfWeights, nameof(sumOfWeights));
 var emptyNumbers = new int[0];
 var sum = emptyNumbers.Sum();
 Printer.Print(sum, nameof(sum));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//ElementAt/ElementAtOrDefault
+Console.WriteLine("ELEMENTAT/ElementAtOrDefault:");
+var secondNumber = numbers.ElementAt(1);
+Printer.Print(secondNumber, nameof(secondNumber));
+//var noExistingPet = pets.ElementAt(99);
+//Printer.Print(noExistingPet, nameof(noExistingPet));
+var noExistingPet = pets.ElementAtOrDefault(99);
+Printer.Print(noExistingPet, nameof(noExistingPet));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//First/Last
+Console.WriteLine("FIRST/LAST:");
+
+
 
 Console.ReadKey();
