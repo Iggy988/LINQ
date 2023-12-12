@@ -105,5 +105,17 @@ Console.WriteLine();
 Console.WriteLine();
 
 
+//Average
+Console.WriteLine("AVERAGE:");
+var averageNumbers = numbers.Average();
+Printer.Print(averageNumbers, nameof(averageNumbers));
+var averageWeightOfPets = pets.Average( pet => pet.Weight);
+Printer.Print(averageWeightOfPets, nameof(averageWeightOfPets));
+//var averagePet = pets.Average();
+//var emptyNumbers = new int[0];
+//var average = emptyNumbers.Average();
+
+
+
 
 Console.ReadKey();
