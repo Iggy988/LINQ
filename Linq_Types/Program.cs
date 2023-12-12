@@ -145,6 +145,18 @@ Console.WriteLine();
 
 //First/Last
 Console.WriteLine("FIRST/LAST:");
+var firstNumber = numbers.First();
+Printer.Print(firstNumber, nameof(firstNumber));
+var firstOdd = numbers.First(n => n % 2 == 1);
+Printer.Print(firstOdd, nameof(firstOdd));
+var lastDog = pets.Last(p => p.PetType == PetType.Dog);
+Printer.Print(lastDog, nameof(lastDog));
+//var lastPetHeavierThan100 = pets.Last(p => p.Weight > 100);
+//Printer.Print(lastPetHeavierThan100, nameof(lastPetHeavierThan100));
+var lastPetHeavierThan100 = pets.LastOrDefault(p => p.Weight > 100);
+Printer.Print(lastPetHeavierThan100, nameof(lastPetHeavierThan100));
+var heaviestPet = pets.OrderBy(p => p.Weight).Last();
+Printer.Print(heaviestPet, nameof(heaviestPet));
 
 
 
