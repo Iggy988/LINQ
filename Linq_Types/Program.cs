@@ -157,7 +157,24 @@ var lastPetHeavierThan100 = pets.LastOrDefault(p => p.Weight > 100);
 Printer.Print(lastPetHeavierThan100, nameof(lastPetHeavierThan100));
 var heaviestPet = pets.OrderBy(p => p.Weight).Last();
 Printer.Print(heaviestPet, nameof(heaviestPet));
+Console.WriteLine();
+Console.WriteLine();
 
 
+//Single
+Console.WriteLine("SINGLE:");
+//var singleLargerThan100 = numbers.Single(n => n >100); /// ako ima vise elemenata vrati ce exception
+//Printer.Print(singleLargerThan100, nameof(singleLargerThan100));
+var singleArray = new[] { 16};
+var singleElem = singleArray.Single();
+Printer.Print(singleElem, nameof(singleElem));
+var singleFish = pets.SingleOrDefault(p => p.PetType == PetType.Fish); // ako ima vise elemenata opet ce vratiti exception
+Printer.Print(singleFish, nameof(singleFish));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//Single
+Console.WriteLine("SINGLE:");
 
 Console.ReadKey();
