@@ -174,7 +174,22 @@ Console.WriteLine();
 Console.WriteLine();
 
 
-//Single
-Console.WriteLine("SINGLE:");
+//Where
+Console.WriteLine("WHERE:");
+var evenNumbers = numbers.Where(n => n %2 == 0);
+Printer.Print(evenNumbers, nameof(evenNumbers));
+var heavierThan10Kilos = pets.Where(p => p.Weight > 10);
+Printer.Print(heavierThan10Kilos, nameof(heavierThan10Kilos));
+var heavierThan100Kilos = pets.Where(p => p.Weight > 100);
+Printer.Print(heavierThan100Kilos, nameof(heavierThan100Kilos));
+var verySpecificPets = pets.Where(p => p.PetType == PetType.Cat || p.PetType == PetType.Dog && p.Weight > 10 && p.Id == 2);
+Printer.Print(verySpecificPets, nameof(verySpecificPets));
+var indexesSelectedByUser = new[] { 1,6,7};
+var petsSelectedByUserAndLighterThan5Kilos = pets.Where((p, index) => p.Weight < 5 && indexesSelectedByUser.Contains(index));
+Printer.Print(petsSelectedByUserAndLighterThan5Kilos, nameof(petsSelectedByUserAndLighterThan5Kilos));
+int countOfHeavyPets1 = pets.Count(p =>p.Weight>30);
+int countOfHeavyPets2 = pets.Where(p =>p.Weight>30).Count();
+Printer.Print(countOfHeavyPets1, nameof(countOfHeavyPets1));
+Printer.Print(countOfHeavyPets2, nameof(countOfHeavyPets2));
 
 Console.ReadKey();
