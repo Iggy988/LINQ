@@ -1,4 +1,4 @@
-﻿var numbers = new[] { -1, 3, 5, 9, 2, 16, 6, 10, 7, -10 };
+﻿var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10, 7, -10 };
 var words = new[] { "lion", "tiger", "leopard"};
 var pets = new[]
 {
@@ -174,7 +174,7 @@ Console.WriteLine();
 Console.WriteLine();
 
 
-//Where
+//Where *(important)
 Console.WriteLine("WHERE:");
 var evenNumbers = numbers.Where(n => n %2 == 0);
 Printer.Print(evenNumbers, nameof(evenNumbers));
@@ -191,5 +191,26 @@ int countOfHeavyPets1 = pets.Count(p =>p.Weight>30);
 int countOfHeavyPets2 = pets.Where(p =>p.Weight>30).Count();
 Printer.Print(countOfHeavyPets1, nameof(countOfHeavyPets1));
 Printer.Print(countOfHeavyPets2, nameof(countOfHeavyPets2));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//Take/TakeLast/TakeWhile
+Console.WriteLine("Take:");
+var firstThreeNumbers = numbers.Take(3);
+Printer.Print(firstThreeNumbers, nameof(firstThreeNumbers));
+var last5Numbers = numbers.TakeLast(5);
+Printer.Print(last5Numbers, nameof(last5Numbers));
+var threeHeaviestPets = pets.OrderBy(p => p.Weight).Take(3);
+Printer.Print(threeHeaviestPets, nameof(threeHeaviestPets));
+var secondLargestNumber = numbers.OrderBy(n => n).TakeLast(2).First();
+Printer.Print(secondLargestNumber, nameof(secondLargestNumber));
+var sixtyPercentOfPets = pets.Take((int)(pets.Count() * 0.6));
+Printer.Print(sixtyPercentOfPets, nameof(sixtyPercentOfPets));
+var smallerThan20TakeWhile = numbers.TakeWhile( n => n < 20);
+Printer.Print(smallerThan20TakeWhile, nameof(smallerThan20TakeWhile));
+var allPetsBefore30Kilos = pets.TakeWhile(p => p.Weight <= 30);
+Printer.Print(allPetsBefore30Kilos, nameof(allPetsBefore30Kilos));
+
 
 Console.ReadKey();
