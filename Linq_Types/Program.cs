@@ -1,5 +1,6 @@
 ﻿var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10, 7, -10 };
 var words = new[] { "lion", "tiger", "leopard"};
+var objects = new object[] { null, 1, "all", 2, "duck", new List<int>(), "are", "awsome", true };
 var pets = new[]
 {
      new Pet(1, "Hannibal", PetType.Fish, 1.1f),
@@ -233,7 +234,22 @@ var skipWhileSmallerThan20 = numbers.SkipWhile(p => p < 20);
 Printer.Print(skipWhileSmallerThan20, nameof(skipWhileSmallerThan20));
 var skipWhileLighterThan30 = pets.SkipWhile(p => p.Weight < 30);
 Printer.Print(skipWhileLighterThan30, nameof(skipWhileLighterThan30));
+Console.WriteLine();
+Console.WriteLine();
 
 
+//OfType
+Console.WriteLine("OFTYPE:");
+var strings = objects.OfType<string>();
+Printer.Print(strings, nameof(strings));
+var flyables = new List<IFlyable>()
+{
+    new Bird(),
+    new Plane(),
+    new Helicopter()
+};
+
+var birds = flyables.OfType<Bird>();
+Printer.Print(birds, nameof(birds));
 
 Console.ReadKey();

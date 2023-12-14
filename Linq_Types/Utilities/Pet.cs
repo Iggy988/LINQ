@@ -1,5 +1,4 @@
-﻿
-public class Pet : IComparable<Pet>
+﻿public class Pet : IComparable<Pet>
 {
     public int Id { get; }
     public string Name { get; }
