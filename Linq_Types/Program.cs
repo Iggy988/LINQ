@@ -1,4 +1,4 @@
-﻿var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10, 7, -10 };
+﻿var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10,3, 9, 20, 7, -10 };
 var words = new[] { "lion", "tiger", "leopard"};
 var objects = new object[] { null, 1, "all", 2, "duck", new List<int>(), "are", "awsome", true };
 var pets = new[]
@@ -11,6 +11,12 @@ var pets = new[]
      new Pet(6, "Lucky", PetType.Dog, 5f),
      new Pet(7, "Storm", PetType.Cat, 0.9f),
      new Pet(8, "Nyan", PetType.Cat, 2.2f),
+};
+var petsDuplicate = new[]
+{
+     new Pet(1, "Hannibal", PetType.Fish, 1.1f),
+     new Pet(1, "Hannibal", PetType.Fish, 1.1f),
+
 };
 
 //Any
@@ -251,5 +257,19 @@ var flyables = new List<IFlyable>()
 
 var birds = flyables.OfType<Bird>();
 Printer.Print(birds, nameof(birds));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//Distinct
+Console.WriteLine("DISTINCT:");
+var noDuplicates = numbers.Distinct();
+Printer.Print(noDuplicates, nameof(noDuplicates));
+var noPetsDuplicateNotWork = petsDuplicate.Distinct();
+Printer.Print(noPetsDuplicateNotWork, nameof(noPetsDuplicateNotWork)); //different references by default
+var noPetsDuplicateWork = petsDuplicate.Distinct(new PetComparerById());
+Printer.Print(noPetsDuplicateWork, nameof(noPetsDuplicateWork)); 
+
+
 
 Console.ReadKey();
