@@ -196,7 +196,7 @@ Console.WriteLine();
 
 
 //Take/TakeLast/TakeWhile
-Console.WriteLine("Take:");
+Console.WriteLine("TAKE:");
 var firstThreeNumbers = numbers.Take(3);
 Printer.Print(firstThreeNumbers, nameof(firstThreeNumbers));
 var last5Numbers = numbers.TakeLast(5);
@@ -211,6 +211,29 @@ var smallerThan20TakeWhile = numbers.TakeWhile( n => n < 20);
 Printer.Print(smallerThan20TakeWhile, nameof(smallerThan20TakeWhile));
 var allPetsBefore30Kilos = pets.TakeWhile(p => p.Weight <= 30);
 Printer.Print(allPetsBefore30Kilos, nameof(allPetsBefore30Kilos));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//Skip
+Console.WriteLine("SKIP:");
+var skip3Number = numbers.Skip(3);
+Printer.Print(skip3Number, nameof(skip3Number));
+var skip300Number = numbers.Skip(300);
+Printer.Print(skip300Number, nameof(skip300Number));
+var skipLast2 = numbers.SkipLast(2);
+Printer.Print(skipLast2, nameof(skipLast2));
+var skipLast2WithTake = numbers.Take(numbers.Count()-2);
+Printer.Print(skipLast2WithTake, nameof(skipLast2WithTake));
+var secondHalfOfPets = pets.Skip(pets.Count()/2);
+Printer.Print(secondHalfOfPets, nameof(secondHalfOfPets));
+var secondPageOfPets = pets.Skip(2).Take(2);
+Printer.Print(secondPageOfPets, nameof(secondPageOfPets));
+var skipWhileSmallerThan20 = numbers.SkipWhile(p => p < 20);
+Printer.Print(skipWhileSmallerThan20, nameof(skipWhileSmallerThan20));
+var skipWhileLighterThan30 = pets.SkipWhile(p => p.Weight < 30);
+Printer.Print(skipWhileLighterThan30, nameof(skipWhileLighterThan30));
+
 
 
 Console.ReadKey();
