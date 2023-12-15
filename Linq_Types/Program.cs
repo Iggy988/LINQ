@@ -1,4 +1,5 @@
 ﻿var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10,3, 9, 20, 7, -10 };
+var numbers2 = new[] { -2,3,15,56,35,-100 };
 var words = new[] { "lion", "tiger", "leopard"};
 var objects = new object[] { null, 1, "all", 2, "duck", new List<int>(), "are", "awsome", true };
 var pets = new[]
@@ -282,6 +283,20 @@ Printer.Print(append100, nameof(append100));
 Printer.Print(petsWithBluebell, nameof(petsWithBluebell));
 var newGrades = originalGrades.Prepend("Terrible").Append("Excellent");
 Printer.Print(newGrades, nameof(newGrades));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//Concat Union
+Console.WriteLine("CONCAT UNION:");
+var allNumbers = numbers.Concat(numbers2);
+Printer.Print(allNumbers, nameof(allNumbers));
+var noDuplicateNumber = numbers.Union(numbers2);
+Printer.Print(noDuplicateNumber, nameof(noDuplicateNumber));
+var unionOfPets = pets.Union(petsDuplicate);
+Printer.Print(unionOfPets, nameof(unionOfPets));
+var unionOfPets2 = pets.Union(petsDuplicate, new PetComparerById());
+Printer.Print(unionOfPets2, nameof(unionOfPets2));
 
 
 
