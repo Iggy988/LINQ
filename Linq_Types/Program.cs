@@ -297,7 +297,35 @@ var unionOfPets = pets.Union(petsDuplicate);
 Printer.Print(unionOfPets, nameof(unionOfPets));
 var unionOfPets2 = pets.Union(petsDuplicate, new PetComparerById());
 Printer.Print(unionOfPets2, nameof(unionOfPets2));
+Console.WriteLine();
+Console.WriteLine();
 
 
+//ToArray/ToList/ToHashSet
+Console.WriteLine("TOARRAY TOLIST TO HASHSET:");
+int[] numbersArray = numbers.ToArray();
+List<int> numbersList = numbers.ToList();
+HashSet<int> hashSet = numbers.ToHashSet();
+Printer.Print(numbersArray, nameof(numbersArray));
+Printer.Print(numbersList, nameof(numbersList));
+Printer.Print(hashSet, nameof(hashSet));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//ToDictionary
+Console.WriteLine("TODICTIONARY:");
+var idTiNameDictionary = pets.ToDictionary(p => p.Id, p => p.Name);
+Printer.Print(idTiNameDictionary, nameof(idTiNameDictionary));
+//var petTypeToNameDictionary = pets.ToDictionary(p => p.PetType, p => p.Name);
+//Printer.Print(petTypeToNameDictionary, nameof(petTypeToNameDictionary));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//ToLookup
+Console.WriteLine("TOLOOKUP:");
+var petTypeToNamesLookup = pets.ToLookup(p => p.PetType, p => p.Name);
+Printer.Print(petTypeToNamesLookup, nameof(petTypeToNamesLookup));
 
 Console.ReadKey();
