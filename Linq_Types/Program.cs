@@ -18,6 +18,7 @@ var petsDuplicate = new[]
      new Pet(1, "Hannibal", PetType.Fish, 1.1f),
 
 };
+var originalGrades = new[] { "Bad", "Medium", "Good" };
 
 //Any
 Console.WriteLine("ANY:");
@@ -268,7 +269,19 @@ Printer.Print(noDuplicates, nameof(noDuplicates));
 var noPetsDuplicateNotWork = petsDuplicate.Distinct();
 Printer.Print(noPetsDuplicateNotWork, nameof(noPetsDuplicateNotWork)); //different references by default
 var noPetsDuplicateWork = petsDuplicate.Distinct(new PetComparerById());
-Printer.Print(noPetsDuplicateWork, nameof(noPetsDuplicateWork)); 
+Printer.Print(noPetsDuplicateWork, nameof(noPetsDuplicateWork));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//Append Prepend
+Console.WriteLine("APPEND PREPEND:");
+var append100 = numbers.Append(100);
+var petsWithBluebell = pets.Prepend(new Pet(0, "BlueBell", PetType.Dog, 25f));
+Printer.Print(append100, nameof(append100));
+Printer.Print(petsWithBluebell, nameof(petsWithBluebell));
+var newGrades = originalGrades.Prepend("Terrible").Append("Excellent");
+Printer.Print(newGrades, nameof(newGrades));
 
 
 
