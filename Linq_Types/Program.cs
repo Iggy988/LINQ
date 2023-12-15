@@ -327,5 +327,26 @@ Console.WriteLine();
 Console.WriteLine("TOLOOKUP:");
 var petTypeToNamesLookup = pets.ToLookup(p => p.PetType, p => p.Name);
 Printer.Print(petTypeToNamesLookup, nameof(petTypeToNamesLookup));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//AsEnumerable
+Console.WriteLine("ASENUMERABLE:");
+var verySpecificList = new VerySpecificList<int> { 1,2,3,4,5,6,7};
+var evenNumbers2 = verySpecificList.AsEnumerable().Where(x => x %2 == 0);
+Printer.Print(evenNumbers2, nameof(evenNumbers2));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//Cast
+Console.WriteLine("CAST:");
+//IEnumerable<long> longs = numbers.Cast<long>();
+//Printer.Print(longs, nameof(longs));
+IEnumerable<PetType> allPetsTypes = Enum.GetValues(typeof(PetType)).Cast<PetType>();
+Printer.Print(allPetsTypes, nameof(allPetsTypes));
+
+
 
 Console.ReadKey();
