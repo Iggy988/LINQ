@@ -2,6 +2,8 @@
 var numbers2 = new[] { -2,3,15,56,35,-100 };
 var words = new[] { "lion", "tiger", "leopard"};
 var objects = new object[] { null, 1, "all", 2, "duck", new List<int>(), "are", "awsome", true };
+
+
 var pets = new[]
 {
      new Pet(1, "Hannibal", PetType.Fish, 1.1f),
@@ -12,6 +14,12 @@ var pets = new[]
      new Pet(6, "Lucky", PetType.Dog, 5f),
      new Pet(7, "Storm", PetType.Cat, 0.9f),
      new Pet(8, "Nyan", PetType.Cat, 2.2f),
+};
+var people = new[]
+{
+    new PetOwner(1, "John", new[]{pets.ElementAt(0), pets.ElementAt(1)}),
+    new PetOwner(2, "Jack", new[]{pets.ElementAt(2)}),
+    new PetOwner(3, "Stephanie", new[]{pets.ElementAt(3), pets.ElementAt(4), pets.ElementAt(5)}),
 };
 var petsDuplicate = new[]
 {
@@ -368,5 +376,70 @@ var petsInitials = pets.OrderBy(x => x.Name).Select(p => $"{p.Name.First()}");
 Printer.Print(petsInitials, nameof(petsInitials));
 var petsData = pets.Select(x => $"Pet named {x.Name} of type {x.PetType} and weight {x.Weight}");
 Printer.Print(petsData, nameof(petsData));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//SelectMany
+Console.WriteLine("SELECTMANY:");
+var petsOfPeople = people.OurSelect(p => p.Pets);
+Printer.Print(petsOfPeople, nameof(petsOfPeople));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Console.ReadKey();
