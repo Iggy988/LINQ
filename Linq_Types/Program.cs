@@ -346,7 +346,27 @@ Console.WriteLine("CAST:");
 //Printer.Print(longs, nameof(longs));
 IEnumerable<PetType> allPetsTypes = Enum.GetValues(typeof(PetType)).Cast<PetType>();
 Printer.Print(allPetsTypes, nameof(allPetsTypes));
+Console.WriteLine();
+Console.WriteLine();
 
 
+//Select
+Console.WriteLine("SELECT:");
+var doubleNumbers = numbers.Select(x => x * 2);
+Printer.Print(doubleNumbers, nameof(doubleNumbers));
+var toUppercase = words.Select(x => x.ToUpper());
+Printer.Print(toUppercase, nameof(toUppercase));
+var numberAsStrings = numbers.Select(x => x.ToString());
+Printer.Print(numberAsStrings, nameof(numberAsStrings));
+var numberedWords = words.Select((word, index) => $"{index +1}. {word}");
+Printer.Print(numberedWords, nameof(numberedWords));
+var weights = pets.Select(x => x.Weight);
+Printer.Print(weights, nameof(weights));
+var heavyPets = pets.Where(x => x.Weight > 4).Select(x => x.PetType).Distinct();
+Printer.Print(heavyPets, nameof(heavyPets));
+var petsInitials = pets.OrderBy(x => x.Name).Select(p => $"{p.Name.First()}");
+Printer.Print(petsInitials, nameof(petsInitials));
+var petsData = pets.Select(x => $"Pet named {x.Name} of type {x.PetType} and weight {x.Weight}");
+Printer.Print(petsData, nameof(petsData));
 
 Console.ReadKey();
