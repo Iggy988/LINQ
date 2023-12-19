@@ -1,7 +1,23 @@
-﻿var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10,3, 9, 20, 7, -10 };
+﻿using System.Linq;
+
+var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10,3, 9, 20, 7, -10 };
 var numbers2 = new[] { -2,3,15,56,35,-100 };
 var words = new[] { "lion", "tiger", "leopard"};
 var objects = new object[] { null, 1, "all", 2, "duck", new List<int>(), "are", "awsome", true };
+var nestedListOfNumbers = new List<List<List<int>>>
+{
+    new List<List<int>>
+    {
+        new List<int> { 1, 2, 3,},
+        new List<int> { 4, 5, 6,},
+        new List<int> { 5, 6 },
+    },
+    new List<List<int>>
+    {
+        new List<int> { 10, 12, 13,},
+        new List<int> { 14, 15, 16,},
+    }
+};
 
 
 var pets = new[]
@@ -30,6 +46,7 @@ var petsDuplicate = new[]
 var originalGrades = new[] { "Bad", "Medium", "Good" };
 
 //Any
+#region Any
 Console.WriteLine("ANY:");
 bool isAnyLargerThan10 = numbers.Any(num =>num > 10);
 Console.WriteLine(isAnyLargerThan10);
@@ -43,8 +60,10 @@ var isNotEmpty = pets.Any();
 Printer.Print(isNotEmpty, nameof(isNotEmpty));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 //All
+#region All
 Console.WriteLine("ALL:");
 var areAllLargerThanZero = numbers.All(num => num > 0);
 Printer.Print(areAllLargerThanZero, nameof(areAllLargerThanZero));
@@ -54,8 +73,10 @@ var areAllPetsCats = pets.All(p => p.PetType == PetType.Cat);
 Printer.Print(areAllPetsCats, nameof(areAllPetsCats));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 //Count/LongCont
+#region Count
 Console.WriteLine("COUNT/LONGCOUNT:");
 var countOfDogs = pets.Count(p => p.PetType == PetType.Dog);
 Printer.Print(countOfDogs, nameof(countOfDogs));
@@ -67,8 +88,10 @@ var allPetsCount = pets.Count();
 Printer.Print(allPetsCount, nameof(allPetsCount));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 //Contains
+#region Contains
 Console.WriteLine("CONTAINS:");
 bool is7Present = numbers.Contains(7);
 Printer.Print(is7Present, nameof(is7Present));
@@ -85,8 +108,10 @@ bool isHannibalPresentCustomComparer = pets.Contains(new Pet(1, "Hannibal", PetT
 Printer.Print(isHannibalPresentCustomComparer, nameof(isHannibalPresentCustomComparer));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 //OrderBy
+#region OrderBy
 Console.WriteLine("ORDERBY:");
 var petsOrderedByName = pets.OrderBy(p => p.Name);
 Printer.Print(petsOrderedByName, nameof(petsOrderedByName));
@@ -103,8 +128,10 @@ var petsReversed = pets.Reverse();
 Printer.Print(petsReversed, nameof(petsReversed));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 //Min/Max
+#region Min/Max
 Console.WriteLine("MIN/MAX:");
 var smallest = numbers.Min();
 Printer.Print(smallest, nameof(smallest));
@@ -120,9 +147,11 @@ Printer.Print(minPet, nameof(minPet));
 //var minimalNumber = numbers.Min();
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Average
+#region Average
 Console.WriteLine("AVERAGE:");
 var averageNumbers = numbers.Average();
 Printer.Print(averageNumbers, nameof(averageNumbers));
@@ -133,9 +162,11 @@ Printer.Print(averageWeightOfPets, nameof(averageWeightOfPets));
 //var average = emptyNumbers.Average();
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Sum
+#region Sum
 Console.WriteLine("SUM:");
 var sumOfNumbers = numbers.Sum();
 var sumOfWeights = pets.Sum(p =>  p.Weight);
@@ -146,9 +177,10 @@ var sum = emptyNumbers.Sum();
 Printer.Print(sum, nameof(sum));
 Console.WriteLine();
 Console.WriteLine();
-
+#endregion
 
 //ElementAt/ElementAtOrDefault
+#region ElementAt/ElementAtOrDefault
 Console.WriteLine("ELEMENTAT/ElementAtOrDefault:");
 var secondNumber = numbers.ElementAt(1);
 Printer.Print(secondNumber, nameof(secondNumber));
@@ -158,9 +190,11 @@ var noExistingPet = pets.ElementAtOrDefault(99);
 Printer.Print(noExistingPet, nameof(noExistingPet));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //First/Last
+#region Firs/Last
 Console.WriteLine("FIRST/LAST:");
 var firstNumber = numbers.First();
 Printer.Print(firstNumber, nameof(firstNumber));
@@ -176,9 +210,11 @@ var heaviestPet = pets.OrderBy(p => p.Weight).Last();
 Printer.Print(heaviestPet, nameof(heaviestPet));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Single
+#region Single
 Console.WriteLine("SINGLE:");
 //var singleLargerThan100 = numbers.Single(n => n >100); /// ako ima vise elemenata vrati ce exception
 //Printer.Print(singleLargerThan100, nameof(singleLargerThan100));
@@ -189,9 +225,10 @@ var singleFish = pets.SingleOrDefault(p => p.PetType == PetType.Fish); // ako im
 Printer.Print(singleFish, nameof(singleFish));
 Console.WriteLine();
 Console.WriteLine();
-
+#endregion
 
 //Where *(important)
+#region Where
 Console.WriteLine("WHERE:");
 var evenNumbers = numbers.Where(n => n %2 == 0);
 Printer.Print(evenNumbers, nameof(evenNumbers));
@@ -210,9 +247,11 @@ Printer.Print(countOfHeavyPets1, nameof(countOfHeavyPets1));
 Printer.Print(countOfHeavyPets2, nameof(countOfHeavyPets2));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Take/TakeLast/TakeWhile
+#region Take/TakeLast/TakeWhile
 Console.WriteLine("TAKE:");
 var firstThreeNumbers = numbers.Take(3);
 Printer.Print(firstThreeNumbers, nameof(firstThreeNumbers));
@@ -230,9 +269,11 @@ var allPetsBefore30Kilos = pets.TakeWhile(p => p.Weight <= 30);
 Printer.Print(allPetsBefore30Kilos, nameof(allPetsBefore30Kilos));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Skip
+#region Skip
 Console.WriteLine("SKIP:");
 var skip3Number = numbers.Skip(3);
 Printer.Print(skip3Number, nameof(skip3Number));
@@ -252,9 +293,11 @@ var skipWhileLighterThan30 = pets.SkipWhile(p => p.Weight < 30);
 Printer.Print(skipWhileLighterThan30, nameof(skipWhileLighterThan30));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //OfType
+#region OfType
 Console.WriteLine("OFTYPE:");
 var strings = objects.OfType<string>();
 Printer.Print(strings, nameof(strings));
@@ -264,14 +307,15 @@ var flyables = new List<IFlyable>()
     new Plane(),
     new Helicopter()
 };
-
 var birds = flyables.OfType<Bird>();
 Printer.Print(birds, nameof(birds));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Distinct
+#region Distinct
 Console.WriteLine("DISTINCT:");
 var noDuplicates = numbers.Distinct();
 Printer.Print(noDuplicates, nameof(noDuplicates));
@@ -281,9 +325,11 @@ var noPetsDuplicateWork = petsDuplicate.Distinct(new PetComparerById());
 Printer.Print(noPetsDuplicateWork, nameof(noPetsDuplicateWork));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Append Prepend
+#region Append/Prepend
 Console.WriteLine("APPEND PREPEND:");
 var append100 = numbers.Append(100);
 var petsWithBluebell = pets.Prepend(new Pet(0, "BlueBell", PetType.Dog, 25f));
@@ -293,9 +339,10 @@ var newGrades = originalGrades.Prepend("Terrible").Append("Excellent");
 Printer.Print(newGrades, nameof(newGrades));
 Console.WriteLine();
 Console.WriteLine();
-
+#endregion
 
 //Concat Union
+#region Concat/Union
 Console.WriteLine("CONCAT UNION:");
 var allNumbers = numbers.Concat(numbers2);
 Printer.Print(allNumbers, nameof(allNumbers));
@@ -307,9 +354,11 @@ var unionOfPets2 = pets.Union(petsDuplicate, new PetComparerById());
 Printer.Print(unionOfPets2, nameof(unionOfPets2));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //ToArray/ToList/ToHashSet
+#region ToArray
 Console.WriteLine("TOARRAY TOLIST TO HASHSET:");
 int[] numbersArray = numbers.ToArray();
 List<int> numbersList = numbers.ToList();
@@ -319,9 +368,10 @@ Printer.Print(numbersList, nameof(numbersList));
 Printer.Print(hashSet, nameof(hashSet));
 Console.WriteLine();
 Console.WriteLine();
-
+#endregion
 
 //ToDictionary
+#region ToDictionary
 Console.WriteLine("TODICTIONARY:");
 var idTiNameDictionary = pets.ToDictionary(p => p.Id, p => p.Name);
 Printer.Print(idTiNameDictionary, nameof(idTiNameDictionary));
@@ -329,26 +379,30 @@ Printer.Print(idTiNameDictionary, nameof(idTiNameDictionary));
 //Printer.Print(petTypeToNameDictionary, nameof(petTypeToNameDictionary));
 Console.WriteLine();
 Console.WriteLine();
-
+#endregion
 
 //ToLookup
+#region ToLookup
 Console.WriteLine("TOLOOKUP:");
 var petTypeToNamesLookup = pets.ToLookup(p => p.PetType, p => p.Name);
 Printer.Print(petTypeToNamesLookup, nameof(petTypeToNamesLookup));
 Console.WriteLine();
 Console.WriteLine();
-
+#endregion
 
 //AsEnumerable
+#region AsEnumerable
 Console.WriteLine("ASENUMERABLE:");
 var verySpecificList = new VerySpecificList<int> { 1,2,3,4,5,6,7};
 var evenNumbers2 = verySpecificList.AsEnumerable().Where(x => x %2 == 0);
 Printer.Print(evenNumbers2, nameof(evenNumbers2));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Cast
+#region Cast
 Console.WriteLine("CAST:");
 //IEnumerable<long> longs = numbers.Cast<long>();
 //Printer.Print(longs, nameof(longs));
@@ -356,9 +410,11 @@ IEnumerable<PetType> allPetsTypes = Enum.GetValues(typeof(PetType)).Cast<PetType
 Printer.Print(allPetsTypes, nameof(allPetsTypes));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //Select
+#region Select
 Console.WriteLine("SELECT:");
 var doubleNumbers = numbers.Select(x => x * 2);
 Printer.Print(doubleNumbers, nameof(doubleNumbers));
@@ -378,22 +434,51 @@ var petsData = pets.Select(x => $"Pet named {x.Name} of type {x.PetType} and wei
 Printer.Print(petsData, nameof(petsData));
 Console.WriteLine();
 Console.WriteLine();
+#endregion
 
 
 //SelectMany
+#region SelectMany
 Console.WriteLine("SELECTMANY:");
 var petsOfPeople = people.OurSelect(p => p.Pets);
 Printer.Print(petsOfPeople, nameof(petsOfPeople));
+var petsOfOwners = people
+    .Where(p => p.Name.StartsWith("J"))
+    .SelectMany(p => p.Pets)
+    .Select(p => p.Name);
+Printer.Print(petsOfOwners, nameof(petsOfOwners));
+var sum2 = nestedListOfNumbers
+    .SelectMany(innerList => innerList)
+    .SelectMany(innerInInnerList => innerInInnerList)
+    .Sum();
+Printer.Print(nestedListOfNumbers, nameof(nestedListOfNumbers));
+var ownerPetPairsInfo = people.SelectMany(p => p.Pets, (p, pet) => $"{p.Name} is owner of the  {pet.Name}");
+Printer.Print(ownerPetPairsInfo, nameof(ownerPetPairsInfo));
+Console.WriteLine();
+Console.WriteLine();
+#endregion
 
 
-
-
-
-
-
-
-
-
+//Generating new collection
+Console.WriteLine("Generating new Collection:");
+var emptyInts = Enumerable.Empty<int>();
+Printer.Print(emptyInts, nameof(emptyInts));
+var tenCopiesOf100 = Enumerable.Repeat(100, 10);
+Printer.Print(tenCopiesOf100, nameof(tenCopiesOf100));
+var foxes = Enumerable.Repeat("fox", 3).Select((word, index) => $"{index + 1}. {word}");
+Printer.Print(foxes, nameof(foxes));
+var tenToThirty = Enumerable.Range(10, 21);
+Printer.Print(tenToThirty, nameof(tenToThirty));
+var powerOf2 = Enumerable.Range(0, 10).Select(power => Math.Pow(2, power));
+Printer.Print(powerOf2, nameof(powerOf2));
+var letters = Enumerable.Range('A', 10).Select(number => (char)number);
+Printer.Print(letters, nameof(letters));
+var nonEmptyNumbers = new[] { 1, 2, 3, 4, };
+var defultIfEmpty1 = nonEmptyNumbers.DefaultIfEmpty();
+Printer.Print(defultIfEmpty1, nameof(defultIfEmpty1));
+var emptyNumberss = new int[0];
+var defultIfEmpty2 = emptyNumberss.DefaultIfEmpty(10);
+Printer.Print(defultIfEmpty2, nameof(defultIfEmpty2));
 
 
 
