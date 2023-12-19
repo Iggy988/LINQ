@@ -479,12 +479,22 @@ Printer.Print(defultIfEmpty1, nameof(defultIfEmpty1));
 var emptyNumberss = new int[0];
 var defultIfEmpty2 = emptyNumberss.DefaultIfEmpty(10);
 Printer.Print(defultIfEmpty2, nameof(defultIfEmpty2));
+Console.WriteLine();
+Console.WriteLine();
 
 
-
-
-
-
+//GroupBy
+Console.WriteLine("GroupBy");
+var petsWeightByTypeLookUp = pets.ToLookup(p => p.PetType, p => p.Weight);
+Printer.Print(petsWeightByTypeLookUp, nameof(petsWeightByTypeLookUp));
+var sumOfWeightsPerPerType = petsWeightByTypeLookUp
+    .ToDictionary(l => l.Key, l => l.Sum());
+Printer.Print(sumOfWeightsPerPerType, nameof(sumOfWeightsPerPerType));
+var groupings = pets.GroupBy(pet => pet.PetType, pet => pet.Weight);
+//Printer.Print(groupings, nameof(groupings));
+var sumOfWeightsPerPerType2 = groupings
+    .ToDictionary(l => l.Key, l => l.Sum());
+Printer.Print(sumOfWeightsPerPerType2, nameof(sumOfWeightsPerPerType2));
 
 
 
