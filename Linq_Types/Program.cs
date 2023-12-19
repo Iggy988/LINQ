@@ -496,7 +496,36 @@ var sumOfWeightsPerPerType2 = groupings
     .ToDictionary(l => l.Key, l => l.Sum());
 Printer.Print(sumOfWeightsPerPerType2, nameof(sumOfWeightsPerPerType2));
 
+var personsInitialsToPetsMapping = people
+    //groupby initials
+    .GroupBy(p => p.Name.First())
+    //transform to dictionary
+    .ToDictionary(
+    //key
+    g => g.Key + ".",
+    //value
+    g => string.Join(", ", g
+    // to extract pets from collection of people
+    .SelectMany(person => person.Pets)
+    // to extract name of each pet
+    .Select(pet => pet.Name)));
+Printer.Print(personsInitialsToPetsMapping, nameof(personsInitialsToPetsMapping));
 
+var weightGroups = pets
+    .GroupBy(
+    //grouped pets by floor of their weights
+    pet => Math.Floor(pet.Weight), 
+    //used overrloaded verion of method which give us key and value of each group
+    (key, pets) => new
+    {
+        //creating anonimous object
+        WeightFloor = key,
+        MinWeight = pets.Min(pets => pets.Weight),
+        MaxWeight = pets.Max(pets => pets.Weight)
+    })
+    .OrderBy(groupingInfo => groupingInfo.WeightFloor)
+    .Select(groupInfo => $"Weight group: {groupInfo.WeightFloor}, min weight: {groupInfo.MinWeight}, max weight: {groupInfo.MaxWeight}");
+Printer.Print(weightGroups, nameof(weightGroups));
 
 
 
