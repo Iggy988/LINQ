@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 
 var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10,3, 9, 20, 7, -10 };
-var numbers2 = new[] { -2,3,15,56,35,-100 };
+var numbers2 = new[] { -2,3,15,56,35,-100, 2, 6, 10, 20 };
 var words = new[] { "lion", "tiger", "leopard"};
 var objects = new object[] { null, 1, "all", 2, "duck", new List<int>(), "are", "awsome", true };
 var nestedListOfNumbers = new List<List<List<int>>>
@@ -43,6 +43,26 @@ var petsDuplicate = new[]
      new Pet(1, "Hannibal", PetType.Fish, 1.1f),
 
 };
+var petsDuplicate2 = new[]
+{
+     new Pet(1, "Hannibal", PetType.Fish, 1.1f),
+     new Pet(1, "Hannibal", PetType.Fish, 1.1f),
+
+};
+
+var alice = new PetOwner(1, "Alice", new[] 
+{
+    pets.ElementAt(0), 
+    pets.ElementAt(1), 
+    pets.ElementAt(2), 
+});
+var bob = new PetOwner(2, "Bob", new[]
+{
+    pets.ElementAt(0),
+    pets.ElementAt(1),
+    pets.ElementAt(3),
+});
+
 var originalGrades = new[] { "Bad", "Medium", "Good" };
 
 //Any
@@ -526,20 +546,32 @@ var weightGroups = pets
     .OrderBy(groupingInfo => groupingInfo.WeightFloor)
     .Select(groupInfo => $"Weight group: {groupInfo.WeightFloor}, min weight: {groupInfo.MinWeight}, max weight: {groupInfo.MaxWeight}");
 Printer.Print(weightGroups, nameof(weightGroups));
+Console.WriteLine();
+Console.WriteLine();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//Intersect and Except
+Console.WriteLine("Intersect and Except");
+var numbersIntersection = numbers.Intersect(numbers2);
+Printer.Print(numbersIntersection, nameof(numbersIntersection));
+var numbersException = numbers.Except(numbers2);
+Printer.Print(numbersException, nameof(numbersException));
+var petsIntersection = pets.Intersect(petsDuplicate);
+Printer.Print(petsIntersection, nameof(petsIntersection));
+var petsIntersection2 = pets.Intersect(petsDuplicate, new PetComparerById());
+Printer.Print(petsIntersection2, nameof(petsIntersection2));
+var sharedPets = bob.Pets.Intersect(alice.Pets);
+Printer.Print(sharedPets, nameof(sharedPets));
+var bobExclusivePets = bob.Pets.Except(alice.Pets);
+Printer.Print(bobExclusivePets, nameof(bobExclusivePets));
+var petsWithOneOwnerOnly = bob.Pets.Concat(alice.Pets).Except(bob.Pets.Intersect(alice.Pets));
+Printer.Print(petsWithOneOwnerOnly, nameof(petsWithOneOwnerOnly));
+bool areEqual = numbers.SequenceEqual(numbers2);
+Printer.Print(areEqual, nameof(areEqual));
+bool arePetsEqual = petsDuplicate2.SequenceEqual(petsDuplicate);
+Printer.Print(arePetsEqual, nameof(arePetsEqual));
+bool arePetsEqual2 = petsDuplicate2.SequenceEqual(petsDuplicate, new PetComparerById());
+Printer.Print(arePetsEqual2, nameof(arePetsEqual2));
 
 
 
