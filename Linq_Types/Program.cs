@@ -31,6 +31,14 @@ var pets = new[]
      new Pet(7, "Storm", PetType.Cat, 0.9f),
      new Pet(8, "Nyan", PetType.Cat, 2.2f),
 };
+
+var clinicAppoinments = new[]
+{
+    new ClinicAppointment(clinicId: 2, petId:1, new DateTime()),
+    new ClinicAppointment(clinicId: 3, petId:3, new DateTime()),
+    new ClinicAppointment(clinicId: 1, petId:4, new DateTime()),
+    new ClinicAppointment(clinicId: 2, petId:1, new DateTime()),
+};
 var people = new[]
 {
     new PetOwner(1, "John", new[]{pets.ElementAt(0), pets.ElementAt(1)}),
@@ -572,6 +580,17 @@ bool arePetsEqual = petsDuplicate2.SequenceEqual(petsDuplicate);
 Printer.Print(arePetsEqual, nameof(arePetsEqual));
 bool arePetsEqual2 = petsDuplicate2.SequenceEqual(petsDuplicate, new PetComparerById());
 Printer.Print(arePetsEqual2, nameof(arePetsEqual2));
+Console.WriteLine();
+Console.WriteLine();
+
+
+//Join
+Console.WriteLine("Join");
+var petAppointmentInfo = pets.Join(
+    clinicAppoinments,
+    p => p.Id, clinicAppoinment => clinicAppoinment.PetId,
+    (p, clinicAppoinment) => $"{p.Name} has an appointment on {clinicAppoinment.DateTime}");
+Printer.Print(petAppointmentInfo, nameof(petAppointmentInfo));
 
 
 
