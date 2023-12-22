@@ -34,11 +34,18 @@ var pets = new[]
 
 var clinicAppoinments = new[]
 {
-    new ClinicAppointment(clinicId: 2, petId:1, new DateTime()),
-    new ClinicAppointment(clinicId: 3, petId:3, new DateTime()),
-    new ClinicAppointment(clinicId: 1, petId:4, new DateTime()),
-    new ClinicAppointment(clinicId: 2, petId:1, new DateTime()),
+    new ClinicAppointment(clinicId: 2, petId:1, new DateTime(2023,5,6)),
+    new ClinicAppointment(clinicId: 3, petId:3, new DateTime(2022,12,5)),
+    new ClinicAppointment(clinicId: 1, petId:4, new DateTime(2024,4,20)),
+    new ClinicAppointment(clinicId: 2, petId:1, new DateTime(2023,9,15)),
 };
+var veterinaryClinics = new[]
+{
+    new VeterinaryClinic(id:1, name: "Happy Paws Clinic"),
+    new VeterinaryClinic(id:2, name: "Fish Doctor"),
+    new VeterinaryClinic(id:3, name: "Pure Purr Clinic"),
+};
+
 var people = new[]
 {
     new PetOwner(1, "John", new[]{pets.ElementAt(0), pets.ElementAt(1)}),
@@ -586,11 +593,33 @@ Console.WriteLine();
 
 //Join
 Console.WriteLine("Join");
-var petAppointmentInfo = pets.Join(
+var petAppointmentInfo = pets
+    .Join(
     clinicAppoinments,
     p => p.Id, clinicAppoinment => clinicAppoinment.PetId,
     (p, clinicAppoinment) => $"{p.Name} has an appointment on {clinicAppoinment.DateTime}");
 Printer.Print(petAppointmentInfo, nameof(petAppointmentInfo));
+
+var petAppointmentFullInfo = pets
+    .Join(
+    clinicAppoinments,
+    pet => pet.Id,
+    clinicAppoinment => clinicAppoinment.PetId,
+    (pet, clinicAppoinment) => new
+    {
+        Pet = pet,
+        Appintment = clinicAppoinment
+    })
+    .Join(veterinaryClinics,
+    petAppointmentPair => petAppointmentPair.Appintment.ClinicId,
+    veterinaryClinic => veterinaryClinic.Id,
+    (petAppointmentPair, clinic) => 
+    $"Pet {petAppointmentPair.Pet.Name} has an appointment on {petAppointmentPair.Appintment.DateTime} in {clinic.Name}"
+    );
+Printer.Print(petAppointmentFullInfo, nameof(petAppointmentFullInfo));
+
+
+
 
 
 
