@@ -617,11 +617,37 @@ var petAppointmentFullInfo = pets
     $"Pet {petAppointmentPair.Pet.Name} has an appointment on {petAppointmentPair.Appintment.DateTime} in {clinic.Name}"
     );
 Printer.Print(petAppointmentFullInfo, nameof(petAppointmentFullInfo));
+Console.WriteLine();
+Console.WriteLine();
 
 
+//GroupJoin
+Console.WriteLine("GroupJoin");
+var groupPetsAppointmets = pets.GroupJoin(
+    clinicAppoinments,
+    pet => pet.Id,
+    clinicAppoinment => clinicAppoinment.PetId,
+    (pet, appointments) => 
+    {
+        var forrmatedAppointmets = string.Join(", ", appointments.Select(ap => ap.DateTime));
+        return $"Pet {pet.Name} has appointment on {forrmatedAppointmets}";
+    });
+Printer.Print(groupPetsAppointmets, nameof(groupPetsAppointmets));
 
+var leftJoin = pets.GroupJoin(
+    clinicAppoinments,
+    pet => pet.Id,
+    clinicAppoinment => clinicAppoinment.PetId,
+    (pet, appointments) => new
+    {
+        Pet = pet,
+        Appointment = appointments.DefaultIfEmpty()
+    }).SelectMany(
+    petAppointmentsPair => petAppointmentsPair.Appointment,
+    (petAppointmentsPetPair, singleAppointment) =>
+    $"Pet {petAppointmentsPetPair.Pet.Name} has an appoinment on {singleAppointment?.DateTime}");
 
-
+Printer.Print(leftJoin, nameof(leftJoin));
 
 
 
