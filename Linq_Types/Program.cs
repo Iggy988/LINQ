@@ -3,6 +3,8 @@
 var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10,3, 9, 20, 7, -10 };
 var numbers2 = new[] { -2,3,15,56,35,-100, 2, 6, 10, 20 };
 var words = new[] { "lion", "tiger", "leopard"};
+var leters = new[] { "a", "b", "c", "d" };
+var sentence = "The quick brownish fox jumps over a lazy dog.";
 var objects = new object[] { null, 1, "all", 2, "duck", new List<int>(), "are", "awsome", true };
 var nestedListOfNumbers = new List<List<List<int>>>
 {
@@ -648,18 +650,34 @@ var leftJoin = pets.GroupJoin(
     $"Pet {petAppointmentsPetPair.Pet.Name} has an appoinment on {singleAppointment?.DateTime}");
 
 Printer.Print(leftJoin, nameof(leftJoin));
+Console.WriteLine();
+Console.WriteLine();
 
 
+//Aggregate
+Console.WriteLine("Aggregate");
+var sumOfNumbersWithAggregate = numbers.Aggregate((sum, nextNum) => sum + nextNum);
+Printer.Print(sumOfNumbersWithAggregate, nameof(sumOfNumbersWithAggregate));
+var loongestWord = sentence.Split(" ")
+    .Aggregate((longestSoFar, nextWord) =>
+            nextWord.Length > longestSoFar.Length ? nextWord : longestSoFar);
+Printer.Print(loongestWord, nameof(loongestWord));
+var joinnedLetters = leters.Aggregate((resultSoFar, nextLetter) =>
+        $"{resultSoFar}, {nextLetter}");
+Printer.Print(joinnedLetters, nameof(joinnedLetters));
+var countOfLetters = leters.Aggregate(0, (countSoFar, nextLetter) => countSoFar + 1);
+Printer.Print(countOfLetters, nameof(countOfLetters));
+var allLengths = sentence.Split(" ")
+    .Aggregate(Enumerable.Empty<int>(),
+    (lengthCollection, nextWord) => lengthCollection.Append(nextWord.Length));
+Printer.Print(allLengths, nameof(allLengths));
 
-
-
-
-
-
-
-
-
-
+int factorialBase = 10;
+var factorial = Enumerable.Range(1, factorialBase - 1)
+    .Aggregate(
+       10,
+       (factorialSoFar, nextNum) => factorialSoFar * (factorialBase - nextNum));
+Printer.Print(factorial, nameof(factorial));
 
 
 
