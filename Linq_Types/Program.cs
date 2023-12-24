@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Drawing;
+using System.Linq;
 
 var numbers = new[] { -1, 3, 5, 9, 20, 2, 16, 6, 10,3, 9, 20, 7, -10 };
 var numbers2 = new[] { -2,3,15,56,35,-100, 2, 6, 10, 20 };
@@ -20,7 +21,17 @@ var nestedListOfNumbers = new List<List<List<int>>>
         new List<int> { 14, 15, 16,},
     }
 };
+var countries = new[] { "United States" , "Great Britain", "Poland"};
+var countriesCurrency = new[] { "USA" , "GBP", "PLN"};
 
+var points = new[]
+{
+    new Point(10, 10),
+    new Point(10, 11),
+    new Point(11, 12),
+    new Point(11, 14),
+    new Point(12, 16),
+};
 
 var pets = new[]
 {
@@ -678,9 +689,22 @@ var factorial = Enumerable.Range(1, factorialBase - 1)
        10,
        (factorialSoFar, nextNum) => factorialSoFar * (factorialBase - nextNum));
 Printer.Print(factorial, nameof(factorial));
+Console.WriteLine();
+Console.WriteLine();
 
 
-
+//Zip
+Console.WriteLine("Zip");
+var numbersZippeeWithWords = numbers.Zip(words, (num, word) => $"{num}, {word}");
+Printer.Print(numbersZippeeWithWords, nameof(numbersZippeeWithWords));
+var countryCurrencyDictionary = countries.Zip(countriesCurrency)
+    .ToDictionary(
+        tuple => tuple.First,
+        tuple => tuple.Second);
+Printer.Print(countryCurrencyDictionary, nameof(countryCurrencyDictionary));
+var distances = points
+    .Zip(points.Skip(1), (first, second) => GetDistance(first, second));
+Printer.Print(distances, nameof(distances));
 
 
 
@@ -691,3 +715,10 @@ Printer.Print(factorial, nameof(factorial));
 
 
 Console.ReadKey();
+
+
+static double GetDistance(Point point1, Point point2)
+{
+    return Math.Sqrt(
+        Math.Pow((point2.X - point1.X), 2) + Math.Pow((point2.Y - point1.Y), 2));
+}
