@@ -40,10 +40,25 @@ var petsOrderedByNameDesc2 = (from pet in pets
                               orderby pet.Name
                               select pet).Reverse();
 Printer.Print(petsOrderedByNameDesc2, nameof(petsOrderedByNameDesc2));
+Console.WriteLine();
+Console.WriteLine();
 
-
-
-
-
+//where
+Console.WriteLine("where");
+var evenNumbers = from number in numbers
+                  where number % 2 == 0
+                  orderby number descending
+                  select number;
+Printer.Print(evenNumbers, nameof(evenNumbers));
+var specificPets = from pet in pets
+                   where (pet.PetType == PetType.Dog || pet.PetType == PetType.Cat) &&
+                   pet.Weight < 10 &&
+                   pet.Name.Length > 4
+                   select pet;
+Printer.Print(specificPets, nameof(specificPets));
+var countOfCats = (from p in pets
+                  where p.PetType == PetType.Cat
+                  select p).Count();
+Printer.Print(countOfCats, nameof(countOfCats));
 
 Console.ReadKey();
