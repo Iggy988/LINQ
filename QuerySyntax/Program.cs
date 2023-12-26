@@ -11,7 +11,7 @@ var pets = new[]
      new Pet(7, "Storm", PetType.Cat, 0.9f),
      new Pet(8, "Nyan", PetType.Cat, 2.2f),
 };
-
+var words = new[] { "one", "two", "three" };
 
 
 var orderedNumbers = from number in numbers
@@ -60,5 +60,33 @@ var countOfCats = (from p in pets
                   where p.PetType == PetType.Cat
                   select p).Count();
 Printer.Print(countOfCats, nameof(countOfCats));
+Console.WriteLine();
+Console.WriteLine();
+
+//select
+Console.WriteLine("select");
+var tripled = from number in numbers
+              select number * 3;
+Printer.Print(tripled, nameof(tripled));
+var toUppercase = from word in words
+              select word.ToUpper();
+Printer.Print(toUppercase, nameof(toUppercase));
+var namesOnly = from pet in pets
+                select pet.Name;
+Printer.Print(namesOnly, nameof(namesOnly));
+var heavyPetTypees = (from pet in pets
+                     where pet.Weight > 4
+                     select pet).Distinct();
+Printer.Print(heavyPetTypees, nameof(heavyPetTypees));
+var petInitials = from p in pets
+              orderby p.Name
+              select $"{p.Name.First()}";
+Printer.Print(petInitials, nameof(petInitials));
+var petsData = from pet in pets
+               select $"Pet name: {pet.Name}, {pet.Weight} of type: {pet.PetType}";
+Printer.Print(petsData, nameof(petsData));
+
+
+
 
 Console.ReadKey();
