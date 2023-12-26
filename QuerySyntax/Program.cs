@@ -1,5 +1,6 @@
 ﻿
 var numbers = new[] { 9, 3, 7, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+var letters = new[] { 'a', 'b', 'c', };
 var pets = new[]
 {
      new Pet(1, "Hannibal", PetType.Fish, 1.1f),
@@ -12,6 +13,32 @@ var pets = new[]
      new Pet(8, "Nyan", PetType.Cat, 2.2f),
 };
 var words = new[] { "one", "two", "three" };
+var nestedListofNumbers = new List<List<int>>
+{
+    new List<int> { 1, 2, 3,},
+    new List<int> { 4, 5, 6,},
+    new List<int> { 5, 6 },
+};
+var nestedListOfNumbersComplex = new List<List<List<int>>>
+{
+    new List<List<int>>
+    {
+        new List<int> { 1, 2, 3,},
+        new List<int> { 4, 5, 6,},
+        new List<int> { 5, 6 },
+    },
+    new List<List<int>>
+    {
+        new List<int> { 10, 12, 13,},
+        new List<int> { 14, 15, 16,},
+    }
+};
+var people = new[]
+{
+    new PetOwner(1, "John", new[]{pets.ElementAt(0), pets.ElementAt(1)}),
+    new PetOwner(2, "Jack", new[]{pets.ElementAt(2)}),
+    new PetOwner(3, "Stephanie", new[]{pets.ElementAt(3), pets.ElementAt(4), pets.ElementAt(5)}),
+};
 
 
 var orderedNumbers = from number in numbers
@@ -64,7 +91,7 @@ Console.WriteLine();
 Console.WriteLine();
 
 //select
-Console.WriteLine("select");
+Console.WriteLine("Select");
 var tripled = from number in numbers
               select number * 3;
 Printer.Print(tripled, nameof(tripled));
@@ -85,7 +112,37 @@ Printer.Print(petInitials, nameof(petInitials));
 var petsData = from pet in pets
                select $"Pet name: {pet.Name}, {pet.Weight} of type: {pet.PetType}";
 Printer.Print(petsData, nameof(petsData));
+Console.WriteLine();
+Console.WriteLine();
 
+//SelectMany
+Console.WriteLine("SelectMany");
+var allNumbers = from list in nestedListofNumbers
+                 from number in list
+                 select number;
+Printer.Print(allNumbers, nameof(allNumbers));
+var petsOfPeople = from person in people
+                   where person.Name.StartsWith("J")
+                   from pet in person.Pets
+                   select pet;
+Printer.Print(petsOfPeople, nameof(petsOfPeople));
+var result = new List<string>();
+foreach (var number in numbers)
+{
+    foreach (var letter in letters)
+    {
+        result.Add($"{number},{letter}");
+    }
+}
+var querySyntaxResult = from number in numbers
+                        from letter in letters
+                        select $"{number},{letter}";
+Printer.Print(querySyntaxResult, nameof(querySyntaxResult));
+var flattenedNumbers = from nestedList in nestedListOfNumbersComplex
+                       from list in nestedList
+                       from number in list
+                       select number;
+Printer.Print(flattenedNumbers, nameof(flattenedNumbers));
 
 
 
