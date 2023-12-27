@@ -143,6 +143,46 @@ var flattenedNumbers = from nestedList in nestedListOfNumbersComplex
                        from number in list
                        select number;
 Printer.Print(flattenedNumbers, nameof(flattenedNumbers));
+Console.WriteLine();
+Console.WriteLine();
+
+//Group by
+Console.WriteLine("Group by");
+var groupedPets = from pet in pets
+                  group pet by pet.PetType;
+Printer.Print(groupedPets, nameof(groupedPets));
+var petTypeWeightSum = groupedPets.ToDictionary(
+    grouping => grouping.Key,
+    grouping => grouping.Sum(pet => pet.Weight));
+Printer.Print(petTypeWeightSum, nameof(petTypeWeightSum));
+//first group people by lether of their name
+var peopleInitialsPetsMapping = (from person in people
+                                 group person by person.Name.First())
+                                 // use collection of groupings to build dixctionary
+                                 //first key is letter of name is key of grouping and key of dictionary
+                                 .ToDictionary(grouping => grouping.Key,
+                                 //the value is name of pets belonging to people of group
+                                 grouping => string.Join(",", from person in grouping
+                                                              from pet in person.Pets
+                                                              select pet.Name));
+Printer.Print(peopleInitialsPetsMapping, nameof(peopleInitialsPetsMapping));
+var petWeightGroup = from pet in pets
+                     group pet by Math.Floor(pet.Weight) into grouping
+                     orderby grouping.Key
+                     let petsOrderedByWeight = from pet in grouping
+                                               orderby pet.Weight
+                                               select pet
+                     select new
+                     {
+                         Key = grouping.Key,
+                         LightesPet = petsOrderedByWeight.First(),
+                         HeviestPet = petsOrderedByWeight.Last()
+                     };
+var petsWeightGroupAsString = from petWeightGrou in petWeightGroup
+                              select $"Weight category: {petWeightGrou.Key}," +
+                              $" heaviest pet: {petWeightGrou.HeviestPet.Name}," +
+                              $" lightest pet: {petWeightGrou.LightesPet.Name}";
+Printer.Print(petsWeightGroupAsString, nameof(petsWeightGroupAsString));
 
 
 
