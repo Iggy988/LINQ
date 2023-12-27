@@ -12,6 +12,19 @@ var pets = new[]
      new Pet(7, "Storm", PetType.Cat, 0.9f),
      new Pet(8, "Nyan", PetType.Cat, 2.2f),
 };
+var clinicAppoinments = new[]
+{
+    new ClinicAppointment(clinicId: 2, petId:1, new DateTime(2023,5,6)),
+    new ClinicAppointment(clinicId: 3, petId:3, new DateTime(2022,12,5)),
+    new ClinicAppointment(clinicId: 1, petId:4, new DateTime(2024,4,20)),
+    new ClinicAppointment(clinicId: 2, petId:1, new DateTime(2023,9,15)),
+};
+var veterinaryClinics = new[]
+{
+    new VeterinaryClinic(id:1, name: "Happy Paws Clinic"),
+    new VeterinaryClinic(id:2, name: "Fish Doctor"),
+    new VeterinaryClinic(id:3, name: "Pure Purr Clinic"),
+};
 var words = new[] { "one", "two", "three" };
 var nestedListofNumbers = new List<List<int>>
 {
@@ -183,6 +196,37 @@ var petsWeightGroupAsString = from petWeightGrou in petWeightGroup
                               $" heaviest pet: {petWeightGrou.HeviestPet.Name}," +
                               $" lightest pet: {petWeightGrou.LightesPet.Name}";
 Printer.Print(petsWeightGroupAsString, nameof(petsWeightGroupAsString));
+Console.WriteLine();
+Console.WriteLine();
+
+//join
+Console.WriteLine("Join");
+var innerJoin = from pet in pets
+                join appointment in clinicAppoinments
+                on pet.Id equals appointment.PetId
+                select $"Pet name: {pet.Name}, appointment on {appointment.DateTime}";
+Printer.Print(innerJoin, nameof(innerJoin));
+var innerJoinThreeTables = from pet in pets
+                           join appointment in clinicAppoinments
+                           on pet.Id equals appointment.PetId
+                           join clinic in veterinaryClinics
+                           on appointment.ClinicId equals clinic.Id
+                           select $"Pet name: {pet.Name}, appointment on {appointment.DateTime} in clinic {clinic.Name}";
+Printer.Print(innerJoinThreeTables, nameof(innerJoinThreeTables));
+var leftJoin = from pet in pets
+               join appointment in clinicAppoinments
+               on pet.Id equals appointment.PetId into petsAppointment
+               //select new
+               //{
+               //    Pet = pet,
+               //    PetsAppointment = petsAppointment
+               //};
+               from singleAppointment in petsAppointment.DefaultIfEmpty()
+               select $"Pet name: {pet.Name}, appointment on {singleAppointment?.DateTime}";
+Printer.Print(leftJoin, nameof(leftJoin));
+
+
+
 
 
 
